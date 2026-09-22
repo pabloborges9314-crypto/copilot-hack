@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Água em Foco: informação e atitudes simples para preservar a água e cuidar da saúde.">
+  <title>Água em Foco | Uso sustentável da água</title>
+  <style>
+    :root {
+      --azul-profundo: #0b5499;
+      --azul: #00a8e8;
+      --azul-claro: #e9f8ff;
+      --marinho: #07345d;
+      --texto: #17324d;
+      --muted: #557087;
+      --branco: #fff;
+      --sombra: 0 18px 45px rgba(7, 52, 93, .12);
+      --raio: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--texto);
+      background: #f7fbfd;
+      font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: inherit; }
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -4rem;
+      z-index: 20;
+      padding: .7rem 1rem;
+      color: var(--branco);
+      background: var(--marinho);
+      border-radius: 8px;
+    }
+    .skip-link:focus { top: 1rem; }
+    :focus-visible { outline: 3px solid #ffca3a; outline-offset: 3px; }
+    .container { width: min(1120px, calc(100% - 2.5rem)); margin: auto; }
+
+    header {
+      color: var(--branco);
+      background: linear-gradient(120deg, var(--marinho), var(--azul-profundo) 60%, #087bbd);
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 1.25rem 0;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .7rem;
+      color: var(--branco);
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .brand-mark {
+      display: grid;
+      width: 2.4rem;
+      height: 2.4rem;
+      place-items: center;
+      color: var(--azul-profundo);
+      background: var(--branco);
+      border-radius: 50% 50% 50% 5%;
+      transform: rotate(-45deg);
+    }
+    .brand-mark span { transform: rotate(45deg); }
+    nav ul { display: flex; flex-wrap: wrap; gap: 1.2rem; margin: 0; padding: 0; list-style: none; }
+    nav a { color: var(--branco); text-decoration: none; font-size: .95rem; font-weight: 600; opacity: .9; }
+    nav a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+    .hero { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 4rem; min-height: 540px; padding: 4.5rem 0 5rem; }
+    .eyebrow { margin: 0 0 .7rem; color: #83dcff; font-size: .8rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    h1, h2, h3 { line-height: 1.15; letter-spacing: -.035em; }
+    h1 { max-width: 650px; margin: 0; font-size: clamp(2.5rem, 6vw, 5rem); }
+    .hero-copy { max-width: 590px; margin: 1.25rem 0 2rem; color: #d9f4ff; font-size: 1.15rem; }
+    .button {
+      display: inline-block;
+      padding: .8rem 1.15rem;
+      color: var(--marinho);
+      background: var(--branco);
+      border: 2px solid var(--branco);
+      border-radius: 999px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .button:hover { color: var(--branco); background: transparent; }
+    .hero-art { position: relative; min-height: 310px; }
+    .wave { position: absolute; inset: 15% 0 0; border: 2px solid rgba(255,255,255,.28); border-radius: 50%; transform: rotate(-10deg); }
+    .wave::before, .wave::after { content: ""; position: absolute; border: 2px solid rgba(255,255,255,.18); border-radius: 50%; }
+    .wave::before { inset: 12%; }
+    .wave::after { inset: 24%; }
+    .drop { position: absolute; top: 8%; left: 34%; width: 130px; height: 180px; background: linear-gradient(145deg, #a9efff, var(--azul)); border-radius: 70% 25% 70% 70%; box-shadow: 16px 20px 0 rgba(0,0,0,.08); transform: rotate(45deg); }
+    .drop::after { content: "💧"; position: absolute; top: 38%; left: 34%; font-size: 2rem; transform: rotate(-45deg); }
+
+    main { padding: 5rem 0; }
+    .section-heading { max-width: 680px; margin-bottom: 2.2rem; }
+    .section-heading h2 { margin: 0 0 .8rem; color: var(--marinho); font-size: clamp(2rem, 4vw, 3rem); }
+    .section-heading p { margin: 0; color: var(--muted); font-size: 1.05rem; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .card { padding: 1.7rem; background: var(--branco); border: 1px solid #dcecf3; border-radius: var(--raio); box-shadow: 0 8px 25px rgba(7,52,93,.05); }
+    .card-icon { display: grid; width: 3rem; height: 3rem; place-items: center; margin-bottom: 1rem; color: var(--azul-profundo); background: var(--azul-claro); border-radius: 12px; font-size: 1.45rem; }
+    .card h3 { margin: 0 0 .55rem; color: var(--marinho); font-size: 1.3rem; }
+    .card p { margin: 0; color: var(--muted); }
+    .band { margin: 5rem 0; padding: 4rem 0; color: var(--branco); background: var(--azul-profundo); }
+    .band .section-heading h2 { color: var(--branco); }
+    .band .section-heading p { color: #d8f5ff; }
+    .topics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .topic { padding: 1.3rem; border: 1px solid rgba(255,255,255,.2); border-radius: 15px; background: rgba(255,255,255,.1); }
+    .topic h3 { margin: 0 0 .4rem; font-size: 1.1rem; }
+    .topic p { margin: 0; color: #d8f5ff; font-size: .95rem; }
+    .tools { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+    .panel { padding: 2rem; background: var(--branco); border: 1px solid #dcecf3; border-radius: var(--raio); box-shadow: var(--sombra); }
+    .panel h2 { margin-top: 0; color: var(--marinho); }
+    .checklist { margin: 1.5rem 0 0; padding: 0; list-style: none; }
+    .checklist li { display: flex; gap: .7rem; align-items: flex-start; padding: .8rem 0; border-bottom: 1px solid #e5f0f5; }
+    .checklist input { width: 1.2rem; height: 1.2rem; margin-top: .2rem; accent-color: var(--azul-profundo); }
+    .calculator { background: linear-gradient(145deg, var(--marinho), var(--azul-profundo)); color: var(--branco); }
+    .calculator h2 { color: var(--branco); }
+    .calculator p { color: #d8f5ff; }
+    .field { margin: 1.2rem 0; }
+    label { display: block; margin-bottom: .45rem; font-weight: 700; }
+    input[type="number"] { width: 100%; padding: .8rem; color: var(--texto); background: var(--branco); border: 2px solid transparent; border-radius: 9px; font: inherit; }
+    .calculator .button { margin-top: .35rem; color: var(--marinho); background: var(--azul); border-color: var(--azul); cursor: pointer; }
+    .calculator .button:hover { color: var(--branco); background: transparent; }
+    .result { min-height: 3.2rem; margin-top: 1.3rem; padding: .8rem 1rem; color: var(--branco); background: rgba(255,255,255,.12); border-radius: 10px; }
+    .result strong { color: #9be7ff; font-size: 1.25rem; }
+    footer { padding: 2rem 0; color: #d8f5ff; background: var(--marinho); }
+    footer p { margin: 0; text-align: center; font-size: .9rem; }
+    @media (max-width: 780px) {
+      .topbar, .hero { grid-template-columns: 1fr; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .hero { gap: 2rem; padding-top: 3rem; }
+      .hero-art { min-height: 230px; }
+      .cards, .topics, .tools { grid-template-columns: 1fr; }
+      main { padding: 3.5rem 0; }
+      .band { margin: 3.5rem 0; padding: 3rem 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <header>
+    <div class="container">
+      <div class="topbar">
+        <a class="brand" href="#" aria-label="Água em Foco - início"><span class="brand-mark" aria-hidden="true"><span>✦</span></span>Água em Foco</a>
+        <nav aria-label="Navegação principal">
+          <ul>
+            <li><a href="#preservacao">Preservação</a></li>
+            <li><a href="#desafios">Desafios</a></li>
+            <li><a href="#casa">Em casa</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="hero">
+        <div>
+          <p class="eyebrow">Cada gota conta</p>
+          <h1>Água em Foco: cuidar hoje para ter amanhã.</h1>
+          <p class="hero-copy">Informação e atitudes práticas para proteger um dos recursos mais importantes da vida — na sua casa, na sua comunidade e no planeta.</p>
+          <a class="button" href="#casa">Comece pelo seu dia</a>
+        </div>
+        <div class="hero-art" aria-hidden="true"><div class="wave"></div><div class="drop"></div></div>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section id="preservacao" class="container" aria-labelledby="preservacao-titulo">
+      <div class="section-heading">
+        <p class="eyebrow" style="color:var(--azul-profundo)">Consciência e ação</p>
+        <h2 id="preservacao-titulo">Preservar é um compromisso coletivo</h2>
+        <p>A água circula por todos os ambientes e conecta todas as pessoas. Conheça caminhos para usá-la com responsabilidade.</p>
+      </div>
+      <div class="cards">
+        <article class="card"><div class="card-icon" aria-hidden="true">🌱</div><h3>Uso sustentável</h3><p>Consuma apenas o necessário, reutilize quando possível e prefira soluções que economizam água.</p></article>
+        <article class="card"><div class="card-icon" aria-hidden="true">🔧</div><h3>Menos desperdício</h3><p>Uma torneira pingando pode perder muitos litros. Faça manutenção e feche o registro ao sair.</p></article>
+        <article class="card"><div class="card-icon" aria-hidden="true">🌊</div><h3>Rios protegidos</h3><p>Não jogue lixo, óleo ou produtos químicos no ralo. O que vai para a rede pode chegar aos rios.</p></article>
+      </div>
+    </section>
+
+    <section id="desafios" class="band" aria-labelledby="desafios-titulo">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="desafios-titulo">Água limpa é saúde para todos</h2>
+          <p>Preservação, saneamento e cuidado com o ambiente são partes da mesma solução.</p>
+        </div>
+        <div class="topics">
+          <article class="topic"><h3>Contaminação</h3><p>Agrotóxicos, esgoto sem tratamento e resíduos alteram a qualidade da água e ameaçam a biodiversidade.</p></article>
+          <article class="topic"><h3>Saneamento</h3><p>Coleta e tratamento de esgoto, água potável e manejo de resíduos reduzem doenças e desigualdades.</p></article>
+          <article class="topic"><h3>Saúde</h3><p>Lavar as mãos e beber água segura previnem infecções. Cuidar das fontes protege toda a comunidade.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="casa" class="container" aria-labelledby="casa-titulo">
+      <div class="section-heading">
+        <p class="eyebrow" style="color:var(--azul-profundo)">Na prática</p>
+        <h2 id="casa-titulo">Pequenas escolhas, grande impacto</h2>
+        <p>Use o checklist e descubra quanto seu banho consome por mês.</p>
+      </div>
+      <div class="tools">
+        <div class="panel">
+          <h2>Checklist doméstico</h2>
+          <ul class="checklist">
+            <li><input id="torneira" type="checkbox"><label for="torneira">Fecho a torneira ao escovar os dentes.</label></li>
+            <li><input id="banho" type="checkbox"><label for="banho">Mantenho o banho em até 5 minutos.</label></li>
+            <li><input id="vazamentos" type="checkbox"><label for="vazamentos">Verifico vazamentos em torneiras e vasos.</label></li>
+            <li><input id="chuva" type="checkbox"><label for="chuva">Reaproveito água da chuva ou da máquina.</label></li>
+            <li><input id="produtos" type="checkbox"><label for="produtos">Descarto óleo e produtos químicos corretamente.</label></li>
+          </ul>
+        </div>
+        <div class="panel calculator">
+          <h2>Calculadora do banho</h2>
+          <p>Estime o consumo mensal considerando a vazão média do chuveiro.</p>
+          <div class="field"><label for="minutos">Minutos por banho</label><input id="minutos" type="number" min="1" max="120" value="10"></div>
+          <div class="field"><label for="banhos">Banhos por pessoa, por dia</label><input id="banhos" type="number" min="1" max="10" value="1"></div>
+          <div class="field"><label for="pessoas">Pessoas na casa</label><input id="pessoas" type="number" min="1" max="30" value="2"></div>
+          <button class="button" id="calcular" type="button">Calcular consumo</button>
+          <div class="result" id="resultado" role="status" aria-live="polite">Preencha os campos para estimar seu consumo.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container"><p>Água em Foco · Informação para transformar hábitos e preservar o futuro.</p></div></footer>
+  <script>
+    const calcular = document.querySelector("#calcular");
+    const resultado = document.querySelector("#resultado");
+    calcular.addEventListener("click", () => {
+      const minutos = Number(document.querySelector("#minutos").value);
+      const banhos = Number(document.querySelector("#banhos").value);
+      const pessoas = Number(document.querySelector("#pessoas").value);
+      if (![minutos, banhos, pessoas].every((valor) => Number.isFinite(valor) && valor > 0)) {
+        resultado.textContent = "Informe valores maiores que zero para calcular.";
+        return;
+      }
+      const litros = minutos * banhos * pessoas * 9 * 30;
+      resultado.innerHTML = `Consumo estimado: <strong>${litros.toLocaleString("pt-BR")} litros/mês</strong> (vazão média de 9 L/min).`;
+    });
+  </script>
+</body>
+</html>
